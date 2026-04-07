@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إلهام - منصة الأفكار الإبداعية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* تعريف الألوان من الهوية البصرية الموجودة في الصورة */
+        :root {
+            --primary-teal: #208693;
+            --secondary-green: #6CBEA5;
+            --dark-green: #336B00;
+            --accent-yellow: #F6AF42;
+            --light-yellow: #FFD166;
+            --bg-color: #f0f4f4;
+            --white: #ffffff;
+            --text-dark: #2d3436;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* الهيدر / التنقل */
+        header {
+            background-color: var(--primary-teal);
+            padding: 15px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+            font-weight: 800;
+            font-size: 1.5rem;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .nav-actions button {
+            padding: 8px 20px;
+            border-radius: 25px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-outline { background: transparent; color: white; border: 1.5px solid white !important; }
+        .btn-fill { background: var(--secondary-green); color: white; margin-right: 10px; }
+        .btn-fill:hover { background: var(--dark-green); }
+
+        /* قسم الهيرو (الواجهة الرئيسية) */
+        .hero-section {
+            background: linear-gradient(180deg, var(--primary-teal) 0%, var(--secondary-green) 100%);
+            padding: 60px 8% 100px;
+            text-align: center;
+            color: white;
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;
+        }
+
+        .hero-section h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .hero-section p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        /* شريط البحث */
+        .search-box {
+            background: white;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 8px;
+            border-radius: 50px;
+            display: flex;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .search-box input {
+            flex: 1;
+            border: none;
+            padding: 10px 20px;
+            outline: none;
+            font-size: 1rem;
+            border-radius: 50px;
+        }
+
+        .search-box button {
+            background: var(--accent-yellow);
+            color: white;
+            border: none;
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* الإحصائيات */
+        .stats-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: -50px;
+            padding: 0 8%;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 20px;
+            text-align: center;
+            min-width: 160px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            border-bottom: 4px solid var(--accent-yellow);
+        }
+
+        .stat-card .val {
+            display: block;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary-teal);
+        }
+
+        .stat-card .lbl {
+            font-size: 0.9rem;
+            color: #777;
+            font-weight: 500;
+        }
+
+        /* قسم المميزات */
+        .features {
+            padding: 60px 8%;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 40px;
+            color: var(--dark-green);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .f-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 30px;
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #eee;
+        }
+
+        .f-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+        }
+
+        .f-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .f-card h3 {
+            margin-bottom: 15px;
+            color: var(--primary-teal);
+        }
+
+        /* زر التواصل العائم */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: #25d366;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 999;
+        }
+
+        /* الجوال */
+        @media (max-width: 768px) {
+            .hero-section h1 { font-size: 2rem; }
+            .stats-container { flex-wrap: wrap; }
+            .stat-card { flex: 1 1 40%; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-area">
+            <div class="logo-icon">💡</div>
+            <span>إلهام</span>
+        </div>
+        <div class="nav-actions">
+            <button class="btn-outline">تسجيل دخول</button>
+            <button class="btn-fill">ابدأ الآن</button>
+        </div>
+    </header>
+
+    <section class="hero-section">
+        <h1>إلهامك يبدأ هنا</h1>
+        <p>حوّل أفكارك إلى مشاريع واقعية، شارك في مجتمع المبدعين، وزد من رصيدك الإلهامي عبر التفاعل والابتكار.</p>
+        
+        <div class="search-box">
+            <input type="text" placeholder="ما الذي تبحث عنه اليوم؟ (أفكار، مشاريع، شركاء)">
+            <button>استكشاف</button>
+        </div>
+    </section>
+
+    <div class="stats-container">
+        <div class="stat-card">
+            <span class="val">736</span>
+            <span class="lbl">فكرة ملهمة</span>
+        </div>
+        <div class="stat-card">
+            <span class="val">10,794</span>
+            <span class="lbl">مبدع مشارك</span>
+        </div>
+        <div class="stat-card">
+            <span class="val">3,739</span>
+            <span class="lbl">رصيد إلهامي</span>
+        </div>
+    </div>
+
+    <section class="features">
+        <h2 class="section-title">كيف يعمل إلهام؟</h2>
+        <div class="features-grid">
+            <div class="f-card">
+                <span class="f-icon">💭</span>
+                <h3>شارك فكرتك</h3>
+                <p>أودع أفكارك في بنك الإلهام واحصل على دعم المجتمع وتطوير متبادل.</p>
+            </div>
+            <div class="f-card">
+                <span class="f-icon">🤝</span>
+                <h3>دردشة جماعية</h3>
+                <p>ناقش الخطط والخطوات مع خبراء ومبتكرين في غرف الدردشة المتخصصة.</p>
+            </div>
+            <div class="f-card">
+                <span class="f-icon">🚀</span>
+                <h3>خطوات التنفيذ</h3>
+                <p>لا تتوقف عند الفكرة، اتبع مسارات مدروسة لتحويل حلمك إلى مشروع قائم.</p>
+            </div>
+        </div>
+    </section>
+
+    <a href="#" class="whatsapp-float">
+        <span>الدعم الفني</span>
+        <span>📞</span>
+    </a>
+
+    <script>
+        // تأثير بسيط عند التمرير
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.padding = '10px 8%';
+                header.style.background = 'rgba(32, 134, 147, 0.95)';
+            } else {
+                header.style.padding = '15px 8%';
+                header.style.background = 'var(--primary-teal)';
+            }
+        });
+    </script>
+</body>
+</html>
